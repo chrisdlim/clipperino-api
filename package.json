@@ -1,0 +1,31 @@
+{
+  "name": "clipperino-api",
+  "version": "1.0.0",
+  "description": "Sample project for uploading clips!",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start:dev": "concurrently \"tsc --watch\" \"nodemon dist/index.js\"",
+    "start": "node dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrisdlim/clipperino-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chrisdlim/clipperino-api/issues"
+  },
+  "homepage": "https://github.com/chrisdlim/clipperino-api#readme",
+  "dependencies": {
+    "concurrently": "^7.1.0",
+    "fastify": "^3.29.0",
+    "nodemon": "^2.0.16"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.33",
+    "typescript": "^4.6.4"
+  }
+}
