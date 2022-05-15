@@ -20,12 +20,16 @@
   },
   "homepage": "https://github.com/chrisdlim/clipperino-api#readme",
   "dependencies": {
+    "@fastify/multipart": "^6.0.0",
+    "aws-sdk": "^2.1135.0",
     "concurrently": "^7.1.0",
     "fastify": "^3.29.0",
-    "nodemon": "^2.0.16"
+    "nodemon": "^2.0.16",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/node": "^17.0.33",
+    "@types/uuid": "^8.3.4",
     "typescript": "^4.6.4"
   }
 }
