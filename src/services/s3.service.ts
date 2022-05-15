@@ -14,7 +14,7 @@ export class S3Service implements S3ServiceInterface {
   async getObjectsByBucket(bucketName: string) {
     return this.s3Client.listObjectsV2({ Bucket: bucketName }).promise().then(res => res.Contents || []);
   }
-  async addObjectToBucket(bucketName: string, filename: string, data: Buffer|string): Promise<string> {
+  async uploadObjectToBucket(bucketName: string, filename: string, data: Buffer|string): Promise<string> {
     const key = `${uuid()}-${filename}`;
     await this.s3Client.upload({ Bucket: bucketName, Key: key, Body: data}).promise();
     // await this.s3Client.putObject({ Bucket: bucketName, Key: key, Body: data }).promise();

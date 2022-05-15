@@ -12,7 +12,7 @@ export class UploadClip {
     this.file = file;
   }
   async handle() {
-    const s3Key = await this.s3Service.addObjectToBucket(this.clipsBucketName, this.filename, this.file);
+    const s3Key = await this.s3Service.uploadObjectToBucket(this.clipsBucketName, this.filename, this.file);
     return { id: s3Key };
   }
 }
