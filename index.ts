@@ -1,5 +1,5 @@
 import fastify from 'fastify';
-import { GetClipsUseCase, UploadClipUseCase } from './src/actions';
+import { GetClips, UploadClip } from './src/actions';
 import { S3Service } from './src/services';
 
 const app = fastify()
@@ -15,14 +15,14 @@ app.get('/health', async (request, reply) => {
 });
 
 app.get('/clips', async (req, reply) => {
-  const query = new GetClipsUseCase(s3Service, clipsBucketName);
+  const query = new GetClips(s3Service, clipsBucketName);
   reply.send(await query.handle());
 });
 
 app.post('/clips/upload', async (req, reply) => {
   const uploadedFile = await req.file();
   const { filename, file } = uploadedFile;
-  const upload = new UploadClipUseCase(s3Service, clipsBucketName, filename.split(' ').join('-'), file);
+  const upload = new UploadClip(s3Service, clipsBucketName, filename.split(' ').join('-'), file);
   reply.send(await upload.handle());
 });
 
