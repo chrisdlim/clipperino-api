@@ -1,6 +1,6 @@
 import { S3ServiceInterface } from "../services/interfaces/s3.service.interface";
 
-export class UploadClipUseCase {
+export class UploadClip {
   private s3Service: S3ServiceInterface;
   private clipsBucketName: string;
   private filename: string;
