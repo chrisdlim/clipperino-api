@@ -5,14 +5,17 @@ export class UploadClip {
   private clipsBucketName: string;
   private filename: string;
   private file: Buffer;
-  constructor(s3Service: S3ServiceInterface, bucketName: string, filename: string, file: Buffer) {
+  constructor(
+    s3Service: S3ServiceInterface,
+    bucketName: string,
+    filename: string, file: Buffer
+  ) {
     this.s3Service = s3Service;
     this.clipsBucketName = bucketName;
     this.filename = filename;
     this.file = file;
   }
   async handle() {
-    const s3Key = await this.s3Service.uploadObjectToBucket(this.clipsBucketName, this.filename, this.file);
-    return { id: s3Key };
+    return this.s3Service.uploadObjectToBucket(this.clipsBucketName, this.filename, this.file).then(res => ({ id: res }));
   }
 }

@@ -4,7 +4,10 @@ import * as S3 from 'aws-sdk/clients/s3';
 export class GetClips {
   private s3Service: S3ServiceInterface;
   private clipsBucketName: string;
-  constructor(s3Service: S3ServiceInterface, bucketName: string) {
+  constructor(
+    s3Service: S3ServiceInterface,
+    bucketName: string
+  ) {
     this.s3Service = s3Service;
     this.clipsBucketName = bucketName;
   }
