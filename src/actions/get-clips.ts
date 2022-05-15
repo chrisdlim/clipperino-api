@@ -1,4 +1,5 @@
 import { S3ServiceInterface } from "../services/interfaces/s3.service.interface";
+import * as S3 from 'aws-sdk/clients/s3';
 
 export class GetClips {
   private s3Service: S3ServiceInterface;
@@ -13,6 +14,14 @@ export class GetClips {
   }
 
   async getClips() {
-    return this.s3Service.getObjectsByBucket(this.clipsBucketName);
+    return this.s3Service.getObjectsByBucket(this.clipsBucketName).then(res => this.formatS3ObjectsToClips(res));
+  }
+
+  formatS3ObjectsToClips(s3Objects: S3.ObjectList) {
+    return s3Objects.map(({ Key, LastModified, Size }) => ({
+      id: Key,
+      updatedAt: LastModified,
+      size: Size,
+    }))
   }
 }
