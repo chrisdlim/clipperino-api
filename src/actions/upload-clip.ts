@@ -16,6 +16,10 @@ export class UploadClip {
     this.file = file;
   }
   async handle() {
-    return this.s3Service.uploadObjectToBucket(this.clipsBucketName, this.filename, this.file).then(res => ({ id: res }));
+    return this.s3Service.uploadObjectToBucket({
+      bucketName: this.clipsBucketName,
+      filename: this.filename,
+      data: this.file
+    }).then(res => ({ id: res }));
   }
 }

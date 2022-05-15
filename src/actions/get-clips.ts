@@ -17,7 +17,8 @@ export class GetClips {
   }
 
   async getClips() {
-    return this.s3Service.getObjectsByBucket(this.clipsBucketName).then(res => this.formatS3ObjectsToClips(res));
+    return this.s3Service.getObjectsByBucket({ bucketName: this.clipsBucketName })
+      .then(res => this.formatS3ObjectsToClips(res));
   }
 
   formatS3ObjectsToClips(s3Objects: S3.ObjectList) {
