@@ -2,14 +2,14 @@ import fastify from 'fastify';
 import { GetClips, UploadClip } from './src/actions';
 import { S3Service } from './src/services';
 
-const app = fastify()
+const app = fastify();
 app.register(require('@fastify/multipart'));
 const port = 9000;
 const clipsBucketName = 'clips';
 
 const s3Service = new S3Service();
 
-app.get('/health', async (request, reply) => {
+app.get('/health', async (req, reply) => {
   reply.statusCode = 200;
   reply.send();
 });
